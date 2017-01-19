@@ -1,13 +1,15 @@
 ### What is Reactive Programming?
 
-### What is functional Programming?
 ### What is ReactiveX?
 
+### What is RxJava?
 
-RxJava is an implementation of ReactiveX
+ RxJava is an implementation of ReactiveX
 
-# RxJava-guide
+### How can I use RxJava in my java project?
 
+
+https://github.com/ReactiveX/RxJava/wiki 
 https://github.com/ReactiveX
 http://reactivex.io/languages.html
 
