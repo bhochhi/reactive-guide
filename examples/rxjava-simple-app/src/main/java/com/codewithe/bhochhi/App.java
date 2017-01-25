@@ -24,5 +24,8 @@ public class App
 			}
 		
     	});
+    	
+    	Observable<String> Obsers = Observable.from(names);
+    	Obsers.subscribe(System.out::println);
     }
 }
