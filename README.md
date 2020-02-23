@@ -20,4 +20,8 @@ https://gist.github.com/staltz/868e7e9bc2a7b8c1f754
 https://stackabuse.com/spring-reactor-tutorial/
 
 
+[Flight of the Flux 1 - Assembly vs Subscription](https://spring.io/blog/2019/03/06/flight-of-the-flux-1-assembly-vs-subscription) 
+
+[reactor-debugging-experience](https://spring.io/blog/2019/03/28/reactor-debugging-experience)
+
 
