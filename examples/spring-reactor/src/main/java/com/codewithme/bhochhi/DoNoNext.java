@@ -8,22 +8,22 @@ import java.time.Duration;
 
 public class DoNoNext {
     public static void main(String[] args) {
-        System.out.println("Before Thread: "+Thread.currentThread().getName());
-        Flux.range(0,10)
+        System.out.println("Before Thread: " + Thread.currentThread().getName());
+        Flux.range(0, 10)
                 .publishOn(Schedulers.single())
-                .doOnNext(integer ->{
-                    try{
+                .doOnNext(integer -> {
+                    try {
                         Thread.sleep(1000);
-                        System.out.println("doOnNext==>" + integer+"...."+Thread.currentThread().getName());
+                        System.out.println("doOnNext==>" + integer + "...." + Thread.currentThread().getName());
                         integer.intValue();
-                    }catch(Exception err){
+                    } catch (Exception err) {
 
                     }
 
                 })
                 .log()
                 .map(integer -> {
-                    System.out.println("map: "+integer+ ": Thread: "+Thread.currentThread().getName());
+                    System.out.println("map: " + integer + ": Thread: " + Thread.currentThread().getName());
                     System.out.println();
 
                     return integer;
