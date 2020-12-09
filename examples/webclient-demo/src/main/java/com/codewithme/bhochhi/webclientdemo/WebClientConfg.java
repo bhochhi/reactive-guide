@@ -17,7 +17,7 @@ import static java.util.concurrent.TimeUnit.MILLISECONDS;
 @Configuration
 public class WebClientConfg {
 
-    private static final String BASE_URL = "https://jsonplaceholder.typicode.com";
+    private static final String BASE_URL = "";
     public static final int TIMEOUT = 1000;
 
     @Bean

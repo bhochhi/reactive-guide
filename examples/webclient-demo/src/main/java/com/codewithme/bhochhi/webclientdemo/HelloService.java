@@ -1,5 +1,6 @@
 package com.codewithme.bhochhi.webclientdemo;
 
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
@@ -20,9 +21,15 @@ public class HelloService {
     public List<String> sayHello() {
         ReqResMap reqResMap = new ReqResMap(Company.class);
         reqResMap.setRequestUrl("https://httpbin.org/get");
+
         ReqResMap reqResMap2 = new ReqResMap(Person.class);
         reqResMap2.setRequestUrl("https://httpbin.org/anything");
-        List<ReqResMap> sources = Arrays.asList(reqResMap,reqResMap2);
+
+
+        ReqResMap reqResMap3 = new ReqResMap(Greeting[].class);
+        reqResMap3.setRequestUrl("https://jsonplaceholder.typicode.com/posts");
+
+        List<ReqResMap> sources = Arrays.asList(reqResMap,reqResMap2,reqResMap3);
         return helloRepo.makeIOCalls(sources).stream()
                 .map(toBusinessLogic())
                 .collect(Collectors.toList());
@@ -35,6 +42,9 @@ public class HelloService {
             }
             if (reqResMap.getResponseType() == Person.class) {
                 return ((Person) reqResMap.getResponseBody()).getUrl();
+            }
+            if (reqResMap.getResponseType().getName().contains(Greeting.class.getName()) ) {
+                return ((Greeting[]) reqResMap.getResponseBody())[0].getTitle();
             }
             return "No Match";
         };

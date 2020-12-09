@@ -19,7 +19,7 @@ public class HelloRepo {
         this.webClient = webClient;
     }
 
-    public Mono<ReqResMap> fromSource1(final ReqResMap reqResMap) {
+    public Mono<ReqResMap> fromSource1(final ReqResMap reqResMap){
         return webClient
                 .get()
                 .uri(reqResMap.getRequestUrl())
@@ -36,7 +36,6 @@ public class HelloRepo {
 
 
     public List<ReqResMap> makeIOCalls(List<ReqResMap> reqResMaps) {
-
-        return Flux.fromStream(reqResMaps.stream()).flatMap(this::fromSource1).collectList().block();
+            return Flux.fromStream(reqResMaps.stream()).flatMap(this::fromSource1).collectList().block();
     }
 }
