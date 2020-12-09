@@ -51,7 +51,7 @@ public class ConcurrencyModel {
          */
 
         try {
-            Flux<String> flux2 = Flux.just("A", "B").delayElements(Duration.ofMillis(0)); //use Schedulers parallel thread
+            Flux<String> flux2 = Flux.just("A", "B").delayElements(Duration.ofMillis(0)); //use Schedulers parallel thread when you use delayElements
             createSubscribers(flux2);
             Thread.sleep(100);
         } catch (Exception e) {
