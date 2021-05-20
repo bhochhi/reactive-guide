@@ -13,9 +13,22 @@ public class SinkHandler {
 
 
 
-        new SinkHandler().fetchNumber();
+        new SinkHandler().zip();
+//        new SinkHandler().fetchNumber();
 
 
+    }
+
+    private void zip(){
+        Mono.zip(Mono.just("A"),Mono.just("B"))
+                .flatMap(tuple->{
+                   return Mono.zip(Mono.just(tuple.getT1()),Mono.just("E"))
+                           .handle((tu,sink)->{
+                               String t2 = tu.getT2();
+                               String t1 = tu.getT1();
+                                sink.next(t2);
+                           });
+                }).subscribe(System.out::println);
     }
 
 
@@ -39,13 +52,13 @@ public class SinkHandler {
 
 
         //1
-        Flux.interval(Duration.ofSeconds(1)).map(i-> i.intValue() + 2/0)
-                .onErrorResume(e->e instanceof ArithmeticException, e-> { // you don't try/catch anything in lambda will be on onError
-                    System.out.print("this is original");
-                    return Mono.error(e);
-                })
-                .subscribe(System.out::println)
-                ;
+//        Flux.interval(Duration.ofSeconds(1)).map(i-> i.intValue() + 2/0)
+//                .onErrorResume(e->e instanceof ArithmeticException, e-> { // you don't try/catch anything in lambda will be on onError
+//                    System.out.print("this is original");
+//                    return Mono.error(e);
+//                })
+//                .subscribe(System.out::println)
+//                ;
 
 
 
