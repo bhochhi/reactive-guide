@@ -5,7 +5,7 @@ import reactor.core.scheduler.Schedulers;
 
 public class ExceptionHandling {
 
-//https://stackoverflow.com/questions/53595420/correct-way-of-throwing-exceptions-with-reactor 
+//https://stackoverflow.com/questions/53595420/correct-way-of-throwing-exceptions-with-reactor
     public static void main(String[] args) {
         System.out.println("==>Running main in thread: "+Thread.currentThread().getName());
 
